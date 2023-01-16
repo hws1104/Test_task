@@ -1,0 +1,6 @@
+gem 'httparty'
+gem 'nokogiri'
+gem 'open-uri'
+gem 'pdf-reader'
+gem 'pdf-reader'
+gem 'google-apis-drive_v3'
