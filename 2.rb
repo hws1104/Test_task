@@ -32,7 +32,7 @@ def read_data(filename)
   res
 end
 
-def access_token()
+def access_token
   refresh_token = "1//04dRoDsMrKTwSCgYIARAAGAQSNwF-L9IrQ-k-FwS2Sg8oW0LwXX0vrHk5VP1Te4pKcqbOhKbdC8K8nS3TRcGyxWpIlt8XwDxSZwA"
   data = { refresh_token: refresh_token,
            client_id: '732848243306-ieaerbnavkjt1bgnbahejd3rrpr8u38k.apps.googleusercontent.com',
@@ -58,16 +58,8 @@ puts "Total PDF file counts: #{results.files.length}"
 
 results.files.each do |file|
   puts file.name
-  drive.get_file(file.id, download_dest: "pdfs/#{file.name}")
+  drive.get_file(file.id, download_dest: "pdfs/#{file.name}") if File.exist?("pdfs/#{file.name}")
   data.push(read_data(file.name))
 end
 
 puts data
-
-
-# Dir.foreach('pdfs').each do |fname|
-#   next if (fname[0] == ".")
-#   puts fname
-#   puts read_data fname
-#   puts ""
-# end
